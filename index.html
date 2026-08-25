@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b3b7a" />
+  <meta name="description" content="RAJ-AGRISETU X — Rajasthan AgriStack Trust, Reconciliation & Service Delivery Fabric" />
+  <title>RAJ-AGRISETU X | Rajasthan AgriStack Control Tower</title>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div id="splash" class="splash" aria-live="polite">
+    <div class="splash-mark">RAJ</div>
+    <div>
+      <div class="eyebrow splash-eye">Government-ready agricultural DPI prototype</div>
+      <h1>RAJ-AGRISETU X</h1>
+      <p>Rajasthan AgriStack Trust, Reconciliation & Service Delivery Fabric</p>
+    </div>
+    <div class="splash-progress"><span id="splashBar"></span></div>
+    <div id="splashText" class="splash-text">Initializing federated trust fabric…</div>
+  </div>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand">
+        <div class="brand-emblem">R</div>
+        <div><strong>RAJ-AGRISETU X</strong><span>State AgriStack Control Tower</span></div>
+      </div>
+      <div class="env-pill"><span></span> EVALUATOR DEMO · SYNTHETIC OPS DATA</div>
+      <nav id="nav">
+        <button class="nav-item active" data-view="command"><span>01</span> Command Centre</button>
+        <button class="nav-item" data-view="registry"><span>02</span> Registry Operations</button>
+        <button class="nav-item" data-view="care"><span>03</span> CARE Reconciliation</button>
+        <button class="nav-item" data-view="consent"><span>04</span> SahmatiOS Consent</button>
+        <button class="nav-item" data-view="farmer"><span>05</span> Farmer 360</button>
+        <button class="nav-item" data-view="schemes"><span>06</span> Scheme Compiler</button>
+        <button class="nav-item" data-view="exchange"><span>07</span> AgriStack Exchange</button>
+        <button class="nav-item" data-view="sutra"><span>08</span> SUTRA Edge</button>
+        <button class="nav-item" data-view="audit"><span>09</span> Audit & Security</button>
+        <button class="nav-item" data-view="pilot"><span>10</span> 90-Day Pilot</button>
+      </nav>
+      <div class="sidebar-foot">
+        <div><span class="status-dot ok"></span> Core demo services healthy</div>
+        <div class="muted">Syntheon · Rajasthan Innovation Challenge</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="menuBtn" class="icon-btn mobile-only" aria-label="Open navigation">☰</button>
+        <div>
+          <div class="breadcrumb">Agriculture Department · Rajasthan</div>
+          <h2 id="pageTitle">State AgriStack Command Centre</h2>
+        </div>
+        <div class="top-actions">
+          <div class="sync-state"><span class="pulse"></span><span id="syncLabel">Network online</span></div>
+          <button id="offlineBtn" class="btn ghost">Simulate offline</button>
+          <button id="judgeBtn" class="btn primary">▶ Run Judge Demo</button>
+        </div>
+      </header>
+
+      <section id="view-command" class="view active">
+        <div class="hero-strip">
+          <div>
+            <div class="eyebrow">VERIFIED NATIONAL AGRISTACK BASELINE · 20 JUL 2026</div>
+            <div class="hero-number">87,23,010</div>
+            <div class="hero-label">Farmer IDs generated in Rajasthan</div>
+          </div>
+          <div class="hero-message">
+            <strong>Identity scale is achieved. The next challenge is agricultural truth.</strong>
+            <p>RAJ-AGRISETU X keeps farmer, land, crop, consent and service relationships continuously reconciled across authoritative systems — without creating another master database.</p>
+          </div>
+          <div class="hero-badge">Federated<br><strong>by design</strong></div>
+        </div>
+
+        <div class="kpi-grid">
+          <article class="kpi"><div class="kpi-top"><span>Registry coverage</span><span class="tag verified">VERIFIED BASELINE</span></div><strong>87.23L</strong><small>Rajasthan Farmer IDs generated</small><div class="spark"><i style="width:94%"></i></div></article>
+          <article class="kpi"><div class="kpi-top"><span>Registry freshness</span><span class="tag demo">DEMO KPI</span></div><strong>96.8%</strong><small>records passing freshness policy</small><div class="delta good">↑ 2.6 pts this cycle</div></article>
+          <article class="kpi"><div class="kpi-top"><span>Open reconciliations</span><span class="tag demo">DEMO KPI</span></div><strong id="openCasesKpi">1,284</strong><small>cross-source mismatch cases</small><div class="delta warn">317 nearing SLA</div></article>
+          <article class="kpi"><div class="kpi-top"><span>Offline sync success</span><span class="tag demo">DEMO KPI</span></div><strong>99.2%</strong><small>queued transactions acknowledged</small><div class="delta good">last 24h demo window</div></article>
+        </div>
+
+        <div class="grid-2 wide-left">
+          <article class="panel map-panel">
+            <div class="panel-head"><div><div class="eyebrow">STATE OPERATIONS</div><h3>Rajasthan AgriStack Health Map</h3></div><div class="legend"><span><i class="lg good"></i>Healthy</span><span><i class="lg mid"></i>Watch</span><span><i class="lg risk"></i>Priority</span></div></div>
+            <div id="map" class="map" role="img" aria-label="Rajasthan operational map with selected district demo markers"></div>
+            <div class="map-foot"><span>Base map: OpenStreetMap contributors</span><span>Operational scores shown are synthetic evaluator-demo data.</span></div>
+          </article>
+          <article class="panel district-panel">
+            <div class="panel-head"><div><div class="eyebrow">DISTRICT DRILLDOWN</div><h3 id="districtName">Barmer</h3></div><span id="districtScore" class="score-badge risk">72 / 100</span></div>
+            <div class="district-metrics">
+              <div><span>Registry freshness</span><strong id="mFresh">88.4%</strong></div>
+              <div><span>Land linkage</span><strong id="mLand">91.2%</strong></div>
+              <div><span>Consent integrity</span><strong id="mConsent">96.7%</strong></div>
+              <div><span>Reconciliation backlog</span><strong id="mCases">184</strong></div>
+            </div>
+            <div class="insight-box"><span>CARE insight</span><p id="districtInsight">Mutation-linked parcel mismatches are the dominant operational issue; prioritize assisted reconciliation camps in low-connectivity blocks.</p></div>
+            <button class="btn secondary full" data-jump="care">Open district reconciliation queue →</button>
+          </article>
+        </div>
+
+        <div class="grid-3">
+          <article class="panel compact"><div class="panel-head"><h3>Trust Plane</h3><span class="tag live">ACTIVE</span></div><ul class="check-list"><li>Farmer ↔ Land provenance</li><li>CARE event reconciliation</li><li>Sahmati purpose receipts</li><li>Evidence-linked audit trail</li></ul></article>
+          <article class="panel compact"><div class="panel-head"><h3>Service Plane</h3><span class="tag live">ACTIVE</span></div><ul class="check-list"><li>Scheme rule compiler</li><li>eMitra / assisted mode</li><li>Verified claim responses</li><li>BHASHINI voice explanation</li></ul></article>
+          <article class="panel compact"><div class="panel-head"><h3>Last-Mile Plane</h3><span class="tag sutra">SUTRA</span></div><ul class="check-list"><li>Offline transactional queue</li><li>Human-confirmed corrections</li><li>Voice-first field workflows</li><li>Signed portable receipts</li></ul></article>
+        </div>
+      </section>
+
+      <section id="view-registry" class="view">
+        <div class="section-intro"><div><div class="eyebrow">FEDERATED REGISTRY OPERATIONS</div><h3>Authoritative sources remain authoritative.</h3><p>RAJ-AGRISETU maintains references, relationship state, provenance, consent scope and reconciliation events — not a competing copy of every departmental database.</p></div><span class="principle">Ask once · verify at source · reuse with consent</span></div>
+        <div class="panel">
+          <div class="flow-grid">
+            <div class="source-card blue"><b>Jan Aadhaar</b><span>Person & household bridge</span><small>CONTRACT-READY</small></div>
+            <div class="source-card blue"><b>RoR / DILRMP</b><span>Land & mutation authority</span><small>CONTRACT-READY</small></div>
+            <div class="source-card blue"><b>Crop Sown Registry</b><span>Seasonal crop assertions</span><small>UFSI SANDBOX</small></div>
+            <div class="source-card blue"><b>RajKisan</b><span>State agriculture services</span><small>CONTRACT-READY</small></div>
+            <div class="hub-card"><span>RAJ-AGRISETU X</span><strong>Temporal Farmer–Farm Graph</strong><small>source · authority · effective date · consent · hash</small></div>
+            <div class="source-card"><b>Farmer Registry</b><span>Functional farmer identity</span><small>UFSI SANDBOX</small></div>
+            <div class="source-card"><b>Rajdharaa</b><span>Spatial context adapter</span><small>REFERENCE READY</small></div>
+            <div class="source-card"><b>Water Context</b><span>Irrigation & stress layers</span><small>POLICY-BOUND</small></div>
+            <div class="source-card"><b>Scheme Systems</b><span>Benefits & service state</span><small>ADAPTER PATTERN</small></div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <article class="panel"><div class="panel-head"><h3>Identity Drift Detector</h3><span class="tag demo">DEMO</span></div><div class="match-row"><span>Jan Aadhaar</span><b>Kamla Devi</b><em>verified person</em></div><div class="match-row"><span>Land record</span><b>Kamla W/o Mohan</b><em>authoritative land source</em></div><div class="match-row"><span>Farmer Registry</span><b>Kamala Devi</b><em>functional identity</em></div><div class="match-score"><span>Match recommendation</span><strong>0.91</strong><small>Human verification required because parcel relationship changed.</small></div></article>
+          <article class="panel"><div class="panel-head"><h3>Source-State Separation</h3><span class="tag safe">GOVERNED AI</span></div><div class="state-stack"><div><span>SOURCE FACT</span><b>Crop Survey: Wheat</b></div><div><span>FARMER ASSERTION</span><b>Farmer says Mustard</b></div><div><span>AI OBSERVATION</span><b>Likely mustard · advisory only</b></div><div><span>OFFICIAL DECISION</span><b>Pending authorized verifier</b></div></div><p class="note">AI can explain, flag and recommend; it does not overwrite land records, Farmer IDs or statutory eligibility.</p></article>
+        </div>
+      </section>
+
+      <section id="view-care" class="view">
+        <div class="section-intro"><div><div class="eyebrow">CONTINUOUS AGRICULTURAL RECONCILIATION ENGINE</div><h3>CARE turns mutations and conflicting records into governed cases.</h3></div><button id="newMismatchBtn" class="btn secondary">+ Inject demo mutation event</button></div>
+        <div class="grid-2 wide-left">
+          <article class="panel"><div class="panel-head"><div><div class="eyebrow">ACTIVE CASE</div><h3>CARE-RAJ-2026-001284</h3></div><span id="caseStatus" class="tag risk">NEEDS REVIEW</span></div>
+            <div class="timeline">
+              <div class="done"><b>1. Mutation event detected</b><span>RoR source reports newly sanctioned parcel relationship</span></div>
+              <div class="done"><b>2. Impact analysis</b><span>Farmer ID, crop and scheme relationships affected</span></div>
+              <div class="active"><b>3. Evidence reconciliation</b><span>Farmer Registry shows 2 parcels; land source shows 3</span></div>
+              <div><b>4. Human authorization</b><span>Authorized official confirms or requests evidence</span></div>
+              <div><b>5. Propagation receipt</b><span>Downstream sync and final acknowledgement</span></div>
+            </div>
+            <div class="action-row"><button id="approveCase" class="btn primary">Approve reconciliation</button><button id="evidenceCase" class="btn ghost">Request evidence</button><button id="rejectCase" class="btn danger">Reject</button></div>
+          </article>
+          <article class="panel"><div class="panel-head"><h3>Evidence Matrix</h3><span class="tag trace">TRACEABLE</span></div>
+            <table class="data-table"><thead><tr><th>Claim</th><th>Source</th><th>State</th></tr></thead><tbody><tr><td>Farmer identity</td><td>Jan Aadhaar</td><td><span class="mini ok">MATCH</span></td></tr><tr><td>Existing parcels</td><td>Farmer Registry</td><td><span class="mini warn">2 PARCELS</span></td></tr><tr><td>Current land relation</td><td>RoR / Mutation</td><td><span class="mini ok">3 PARCELS</span></td></tr><tr><td>Farmer assertion</td><td>SUTRA assisted flow</td><td><span class="mini info">CONFIRMED</span></td></tr><tr><td>Officer decision</td><td>Authorized role</td><td id="officerDecision"><span class="mini neutral">PENDING</span></td></tr></tbody></table>
+            <div class="hash-box"><span>Evidence bundle hash</span><code id="evidenceHash">7b83…a91c</code></div>
+          </article>
+        </div>
+        <article class="panel"><div class="panel-head"><h3>Reconciliation Queue</h3><div class="filters"><button class="chip active">All</button><button class="chip">Land</button><button class="chip">Identity</button><button class="chip">Crop</button></div></div><div id="queue" class="queue"></div></article>
+      </section>
+
+      <section id="view-consent" class="view">
+        <div class="section-intro"><div><div class="eyebrow">SAHMATIOS</div><h3>Purpose-bound, understandable, revocable farmer consent.</h3><p>Consent is treated as a policy-enforced transaction, not a generic checkbox. The demo records what notice was rendered, in which language, for which data and purpose.</p></div><span class="principle">DPDP-aligned design · not represented as a statutory Consent Manager</span></div>
+        <div class="grid-2">
+          <article class="panel consent-card"><div class="panel-head"><h3>Consent Request</h3><span class="tag demo">SYNTHETIC FARMER</span></div><div class="farmer-mini"><div class="avatar">KD</div><div><b>Kamla Devi</b><span>Farmer ID: RAJ-DEMO-7A•••91</span></div></div><div class="notice"><span>Purpose</span><b>Micro-irrigation scheme readiness check</b><p>“आपकी जमीन, फसल और सिंचाई से जुड़ी जानकारी केवल इस योजना की पात्रता जांचने के लिए उपयोग होगी।”</p></div><div class="consent-data"><label><input type="checkbox" checked disabled> Farmer identity</label><label><input type="checkbox" checked disabled> Land parcels</label><label><input type="checkbox" checked disabled> Current crop</label><label><input type="checkbox" disabled> Bank account</label><label><input type="checkbox" disabled> Household income</label></div><div class="action-row"><button id="grantConsent" class="btn primary">Grant purpose consent</button><button id="denyConsent" class="btn ghost">Decline</button></div></article>
+          <article class="panel"><div class="panel-head"><h3>Consent Receipt</h3><span id="consentState" class="tag neutral">NOT ISSUED</span></div><div id="receiptEmpty" class="empty-state"><div>◎</div><b>No active consent receipt</b><span>Grant the demo request to generate an auditable receipt.</span></div><div id="receipt" class="receipt hidden"><div class="receipt-seal">✓</div><div><span>Receipt ID</span><b id="receiptId">—</b></div><div><span>Purpose</span><b>Scheme readiness</b></div><div><span>Language rendered</span><b>Hindi · text + voice-ready</b></div><div><span>Duration</span><b>24 hours · one purpose</b></div><div><span>Revocable</span><b>Yes</b></div><div><span>Comprehension proof</span><b>Notice + data categories + duration + revocation rendered</b></div><button id="revokeConsent" class="btn danger full">Revoke consent</button></div></article>
+        </div>
+      </section>
+
+      <section id="view-farmer" class="view">
+        <div class="farmer-header"><div class="avatar large">KD</div><div><div class="eyebrow">SYNTHETIC EVALUATOR PERSONA</div><h3>Kamla Devi</h3><p>Barmer · Farmer ID RAJ-DEMO-7A•••91 · Jan Aadhaar linkage simulated</p></div><div class="profile-health"><span>Profile health</span><strong id="profileHealth">82</strong><small>/100</small></div></div>
+        <div class="grid-3">
+          <article class="panel compact"><div class="eyebrow">IDENTITY</div><h3>Verified bridge</h3><p>Jan Aadhaar person ↔ functional Farmer ID</p><span class="tag safe">SOURCE-LINKED</span></article>
+          <article class="panel compact"><div class="eyebrow">LAND</div><h3 id="parcelCount">2 of 3 linked</h3><p>One newly mutated parcel needs reconciliation.</p><button class="link-btn" data-jump="care">Resolve mismatch →</button></article>
+          <article class="panel compact"><div class="eyebrow">CURRENT CROP</div><h3>Mustard</h3><p>Farmer assertion · official crop source pending sync</p><span class="tag warn">ASSERTION</span></article>
+        </div>
+        <div class="grid-2">
+          <article class="panel"><div class="panel-head"><h3>Farmer–Farm Graph</h3><span class="tag trace">TEMPORAL</span></div><div class="graph"><div class="node person">Kamla<br><small>Farmer ID</small></div><div class="edge"></div><div class="node farm">Farm 01<br><small>Khasra 143/2</small></div><div class="node farm">Farm 02<br><small>Khasra 149/1</small></div><div id="graphNewFarm" class="node farm pending">Farm 03<br><small>Khasra 156/4</small></div><div class="graph-label">Relationships carry source, authority, effective date, verification state and consent scope.</div></div></article>
+          <article class="panel"><div class="panel-head"><h3>Only-Once Readiness</h3><span class="tag safe">DATA MINIMIZATION</span></div><ul class="ready-list"><li><span>Identity</span><b>Source verified</b></li><li><span>Land ownership</span><b id="landReady">2/3 verified</b></li><li><span>Crop</span><b>Assertion available</b></li><li><span>District</span><b>Verified</b></li><li><span>Bank data</span><b>Not requested</b></li></ul><p class="note">Services request only the claims needed for their declared purpose rather than full-profile copies.</p></article>
+        </div>
+      </section>
+
+      <section id="view-schemes" class="view">
+        <div class="section-intro"><div><div class="eyebrow">DETERMINISTIC SCHEME COMPILER</div><h3>AI explains. Government rules decide.</h3><p>Machine-readable rule packs are evaluated against verified or explicitly labelled farmer data. Uncertain inputs result in “needs verification”, never fabricated eligibility.</p></div><button id="runScheme" class="btn primary">Run eligibility trace</button></div>
+        <div class="grid-3" id="schemeCards">
+          <article class="scheme-card"><div class="scheme-top"><span>Water efficiency</span><span class="scheme-state likely">LIKELY ELIGIBLE</span></div><h3>Micro-irrigation support</h3><p>Parcel + crop + district conditions pass demo rule pack; irrigation attribute requires source confirmation.</p><button class="link-btn traceBtn">View rule trace →</button></article>
+          <article class="scheme-card"><div class="scheme-top"><span>Risk protection</span><span class="scheme-state verify">VERIFY</span></div><h3>Crop insurance workflow</h3><p>Crop assertion is available but authoritative crop-season synchronization is pending.</p><button class="link-btn traceBtn">View rule trace →</button></article>
+          <article class="scheme-card"><div class="scheme-top"><span>Credit</span><span class="scheme-state ready">READY</span></div><h3>Verified cultivation claim</h3><p>Can return a purpose-limited YES/NO claim after farmer consent instead of sharing the full profile.</p><button class="link-btn traceBtn">View claim contract →</button></article>
+        </div>
+        <article id="ruleTrace" class="panel hidden"><div class="panel-head"><h3>Rule Execution Trace</h3><span class="tag trace">EXPLAINABLE</span></div><table class="data-table"><thead><tr><th>Rule</th><th>Input</th><th>Source</th><th>Result</th></tr></thead><tbody><tr><td>District in notified geography</td><td>Barmer</td><td>Farmer profile</td><td><span class="mini ok">PASS</span></td></tr><tr><td>Active agricultural parcel</td><td>Yes</td><td>Farmer Registry / RoR</td><td><span class="mini ok">PASS</span></td></tr><tr><td>Supported crop</td><td>Mustard</td><td>Farmer assertion</td><td><span class="mini warn">VERIFY</span></td></tr><tr><td>Irrigation condition</td><td>Pending</td><td>Authorized water layer</td><td><span class="mini neutral">MISSING</span></td></tr></tbody></table><div class="decision-box"><span>System result</span><strong>LIKELY ELIGIBLE · 1 SOURCE CONFIRMATION REQUIRED</strong><p>No statutory approval or denial is made by the AI layer.</p></div></article>
+      </section>
+
+      <section id="view-exchange" class="view">
+        <div class="section-intro"><div><div class="eyebrow">RAJASTHAN + NATIONAL DPI</div><h3>AgriStack Exchange & integration contracts</h3><p>Every adapter is explicitly labelled by implementation state. No fake “connected” APIs.</p></div><span class="principle">Raj Sewa Dwaar aligned · UFSI-compatible adapter pattern</span></div>
+        <div class="integration-grid" id="integrations"></div>
+        <article class="panel architecture"><div class="panel-head"><h3>Governed Exchange Path</h3><span class="tag safe">FEDERATED</span></div><div class="arch-flow"><div>Farmer / Officer / eMitra / SUTRA</div><b>↓</b><div>RAJ-AGRISETU Trust & Service Fabric</div><b>↓</b><div>Raj Sewa Dwaar / approved gateway</div><b>↓</b><div>State authoritative systems + UFSI / central AgriStack</div></div><p class="note">Production credentials, security approvals, endpoint contracts and departmental authorization remain explicit deployment dependencies.</p></article>
+      </section>
+
+      <section id="view-sutra" class="view">
+        <div class="section-intro"><div><div class="eyebrow">SUTRA-ID EDGE · LAST-MILE CHANNEL</div><h3>The last 5% coverage machine.</h3><p>Smartphone and eMitra channels handle the majority. SUTRA extends governed workflows to camps, field visits, weak-connectivity locations and low-digital-literacy users.</p></div><span class="principle">Physical capability exists · this screen simulates the AgriStack bridge</span></div>
+        <div class="sutra-shell">
+          <div class="device">
+            <div class="device-top">SUTRA ID EDGE</div>
+            <div class="device-screen">
+              <div id="sutraWave" class="wave"><i></i><i></i><i></i><i></i><i></i></div>
+              <div id="sutraStage" class="sutra-stage"><span>नमस्कार</span><b>मैं आपके किसान रिकॉर्ड की जाँच में सहायता कर सकता हूँ।</b></div>
+              <div class="device-actions"><button id="sutraNext" class="btn primary full">Start assisted flow</button></div>
+            </div>
+          </div>
+          <div class="sutra-details panel">
+            <div class="panel-head"><h3>Assisted transaction</h3><span id="sutraState" class="tag sutra">READY</span></div>
+            <div id="sutraTranscript" class="transcript"><div class="system">BHASHINI / domain ASR adapter ready</div></div>
+            <div class="offline-ledger"><span>Local transaction queue</span><strong id="queueCount">0</strong><small>signed events awaiting sync</small></div>
+            <button id="downloadReceipt" class="btn ghost full" disabled>Download demo receipt JSON</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-audit" class="view">
+        <div class="section-intro"><div><div class="eyebrow">EVIDENCE, SECURITY & GOVERNANCE</div><h3>Who changed what, under whose authority, and why?</h3></div><button id="addAudit" class="btn secondary">Generate demo audit event</button></div>
+        <div class="grid-3"><article class="panel compact"><div class="eyebrow">AUTHORIZATION</div><h3>RBAC + policy scopes</h3><p>Farmer, assisted operator, verifier, district officer and state administrator are distinct roles.</p></article><article class="panel compact"><div class="eyebrow">PROVENANCE</div><h3>Evidence-linked events</h3><p>Source snapshot, actor, reason, timestamp and downstream acknowledgements are retained.</p></article><article class="panel compact"><div class="eyebrow">AI BOUNDARY</div><h3>Human authority first</h3><p>AI cannot mutate RoR, Farmer ID or statutory benefit decisions.</p></article></div>
+        <article class="panel"><div class="panel-head"><h3>Immutable-style Event Journal</h3><span class="tag trace">TAMPER-EVIDENT DESIGN</span></div><div id="auditLog" class="audit-log"></div></article>
+      </section>
+
+      <section id="view-pilot" class="view">
+        <div class="section-intro"><div><div class="eyebrow">90-DAY GOVERNMENT PILOT</div><h3>Prove the fabric before statewide scale.</h3><p>Three contrasting field contexts, production integration discovery, measurable UAT and handover — rather than pretending Rajasthan can be transformed in one sprint.</p></div><span class="principle">Inception → core fabric → field pilot → UAT → scale blueprint</span></div>
+        <div class="roadmap">
+          <div class="phase active"><span>0–15</span><h3>Discover</h3><p>System inventory, authoritative-source matrix, UFSI/Raj Sewa Dwaar contracts, DPIA, pilot selection.</p></div>
+          <div class="phase"><span>15–35</span><h3>Connect</h3><p>Farmer Graph, land adapter, identity bridge, SahmatiOS, CARE event engine.</p></div>
+          <div class="phase"><span>35–55</span><h3>Serve</h3><p>Farmer PWA, officer cockpit, scheme compiler, BHASHINI and SUTRA assisted workflows.</p></div>
+          <div class="phase"><span>55–75</span><h3>Pilot</h3><p>Arid/low-connectivity, irrigated agriculture and high-mutation/peri-urban contexts.</p></div>
+          <div class="phase"><span>75–90</span><h3>Handover</h3><p>Security, load, offline/UAT, training, documentation, observability and statewide capacity plan.</p></div>
+        </div>
+        <article class="panel"><div class="panel-head"><h3>Success Measures</h3><span class="tag safe">OUTCOME-BASED</span></div><div class="measure-grid"><div><b>Freshness</b><span>mutation → registry sync latency</span></div><div><b>Quality</b><span>mismatches / 1,000 profiles</span></div><div><b>Inclusion</b><span>workflows without personal smartphone</span></div><div><b>Consent</b><span>complete purpose/data/duration receipts</span></div><div><b>Offline</b><span>successful queued transaction sync</span></div><div><b>Service</b><span>reduced repeated data submission</span></div></div></article>
+        <div class="vision-banner"><div class="eyebrow">2030 NORTH STAR</div><h3>One Rajasthan Agricultural Trust Fabric.</h3><p>Reuse the same governed identity, consent, geospatial and evidence rails across farmer services, dealer management, fertilizer intelligence, insurance, procurement, water programs and Drone-as-a-Service — without rebuilding trust infrastructure for every new application.</p></div>
+      </section>
+
+      <footer class="footer"><span>RAJ-AGRISETU X · Evaluator prototype</span><span>Verified facts are labelled. Operational demo data is synthetic.</span></footer>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="demoOverlay" class="demo-overlay hidden"><div class="demo-card"><div class="eyebrow">JUDGE DEMO</div><h3 id="demoTitle">Starting guided demonstration</h3><p id="demoText"></p><div class="demo-progress"><span id="demoProgress"></span></div><div class="action-row"><button id="demoSkip" class="btn ghost">Exit demo</button><button id="demoNext" class="btn primary">Next →</button></div></div></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
