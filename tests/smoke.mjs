@@ -11,8 +11,12 @@ assert.ok(/41 districts|41-DISTRICT|41-district/i.test(cc),'Current Rajasthan 41
 assert.ok(ccjs.includes("state.role==='field'"),'Field role boundary missing');
 assert.ok(ccjs.includes('scopedDistrict'),'District role/filter scoping missing');
 assert.ok(ccjs.includes('STATE_CARE_TOTAL=1284'),'Synthetic statewide CARE total missing');
+assert.ok(ccjs.includes('readinessHealth'),'Explainable readiness function missing');
+assert.ok(ccjs.includes('Registry 15%')&&ccjs.includes('Land sync 25%'),'Readiness weights must be disclosed');
 assert.ok(ccjs.includes("caseId:c.id"),'CARE UI must send the active case ID');
 assert.ok(ccjs.includes("localStorage.setItem('rajAgriCareApproval'"),'CARE approval session artifact missing');
+assert.ok(ccjs.includes('Reset Demo'),'Reproducible evaluator reset control missing');
+assert.ok(ccjs.includes('AgriStack Consent Manager'),'AgriStack consent architecture alignment missing');
 assert.ok(cc.includes('CROSS-DEPARTMENT HEALTH'),'Cross-department operating surface missing');
 assert.ok(cc.includes('view-governance'),'Governance control plane missing');
 
@@ -32,6 +36,9 @@ const care=fs.readFileSync('api/care.js','utf8');
 assert.ok(care.includes("'CARE-RAJ-2026-001284'"),'Canonical CARE case missing from API');
 assert.ok(care.includes('approvalArtifact'),'CARE human approval artifact missing');
 assert.ok(care.includes('case_not_found'),'CARE must reject unknown non-demo case IDs');
+const consent=fs.readFileSync('api/consent.js','utf8');
+assert.ok(consent.includes('AGRISTACK_CONSENT_MANAGER_PATTERN'),'Consent API must compose with AgriStack consent architecture');
+assert.ok(consent.includes('itemisedData')&&consent.includes('withdrawalMethod'),'DPDP-notice design fields missing');
 const vercel=JSON.parse(fs.readFileSync('vercel.json','utf8'));
 assert.equal(vercel.rewrites.find(x=>x.source==='/')?.destination,'/command-centre/','Production root must route to command centre');
 assert.equal(vercel.rewrites.find(x=>x.source==='/kisan')?.destination,'/farmer/','Kisan shortcut missing');
