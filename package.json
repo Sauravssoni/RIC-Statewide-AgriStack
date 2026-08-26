@@ -1,8 +1,13 @@
 {
   "name":"raj-agrisetu-x",
-  "version":"1.2.0",
+  "version":"1.3.0",
   "private":true,
   "description":"Evaluator-grade Rajasthan statewide AgriStack operations console and offline farmer PWA",
-  "scripts":{"dev":"python3 -m http.server 3000","check":"node --check app.js && node --check data.js","smoke":"node tests/smoke.mjs","test":"npm run check && npm run smoke"},
+  "scripts":{
+    "dev":"python3 -m http.server 3000",
+    "check":"node --check app.js && node --check data.js && node --check command-centre/app.js",
+    "smoke":"node tests/smoke.mjs",
+    "test":"npm run check && npm run smoke"
+  },
   "engines":{"node":">=20"}
 }
