@@ -1,0 +1,1 @@
+module.exports=(req,res)=>{res.setHeader('Cache-Control','no-store');res.status(200).json({service:'raj-agrisetu-x',mode:'EVALUATOR_DEMO',status:'healthy',timestamp:new Date().toISOString(),integrity:{governmentProductionCredentials:false,syntheticOperationalData:true}})};
