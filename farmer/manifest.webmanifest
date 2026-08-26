@@ -1,0 +1,12 @@
+{
+  "name": "RAJ-AGRISETU Kisan",
+  "short_name": "AgriSetu Kisan",
+  "description": "Offline-first farmer verification and scheme linkage companion for Rajasthan AgriStack.",
+  "start_url": "/farmer/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0b4f8a",
+  "lang": "hi-IN",
+  "orientation": "portrait-primary",
+  "icons": []
+}
