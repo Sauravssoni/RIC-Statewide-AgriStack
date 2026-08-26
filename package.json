@@ -1,12 +1,8 @@
 {
-  "name": "raj-agrisetu-x",
-  "version": "2.0.0",
-  "private": true,
-  "description": "Rajasthan AgriStack operations console, offline farmer PWA and governed demo APIs",
-  "scripts": {
-    "dev": "python3 -m http.server 3000",
-    "check": "node --check app.js && node --check data.js",
-    "test": "node tests/smoke.mjs && npm run check"
-  },
-  "engines": {"node": ">=20"}
+  "name":"raj-agrisetu-x",
+  "version":"1.2.0",
+  "private":true,
+  "description":"Evaluator-grade Rajasthan statewide AgriStack operations console and offline farmer PWA",
+  "scripts":{"dev":"python3 -m http.server 3000","check":"node --check app.js && node --check data.js","smoke":"node tests/smoke.mjs","test":"npm run check && npm run smoke"},
+  "engines":{"node":">=20"}
 }
