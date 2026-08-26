@@ -1,0 +1,2 @@
+const DATA={service:'RAJ-AGRISETU X evaluator API',status:'healthy',mode:'EVALUATOR_DEMO',version:'1.2.0',authorityBoundary:'No Government source mutation is performed by evaluator APIs.'};
+module.exports=(req,res)=>{res.setHeader('Cache-Control','no-store');if(req.method!=='GET'){res.setHeader('Allow','GET');return res.status(405).json({error:'method_not_allowed'});}res.status(200).json({...DATA,time:new Date().toISOString()})};
