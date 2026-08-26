@@ -1,6 +1,6 @@
 # Evaluator Release Gate
 
-A release is submission-ready only when every gate below is either PASS or explicitly disclosed as an external infrastructure limitation.
+A release is submission-ready only when every gate below is PASS or explicitly disclosed as an external infrastructure limitation.
 
 ## Product gates
 - [ ] Production `/` resolves to `command-centre/`, not legacy dashboard/pitch HTML.
@@ -9,7 +9,9 @@ A release is submission-ready only when every gate below is either PASS or expli
 - [ ] Rajasthan current context states 41 districts and keeps production geography bound to authorized Rajdharaa/LGD.
 - [ ] State Overview is officer-first: rollout matrix, pendency/SLA, integration health, source provenance and trusted events.
 - [ ] District and role filters change operational scope rather than acting as decorative controls.
+- [ ] CARE opens the correct evidence matrix for the selected case and sends that exact case ID to the decision API.
 - [ ] CARE actions create bounded decision receipts; no action silently mutates a Government source.
+- [ ] A server offline ACK is never treated as parcel verification; only a CARE human-approval artifact may satisfy the demo land-verification pre-check.
 - [ ] Consent is purpose/scope/duration limited and revocable; offline requests are not shown as active before acknowledgement.
 - [ ] Scheme pre-check is deterministic and explicitly non-statutory.
 
@@ -20,18 +22,21 @@ A release is submission-ready only when every gate below is either PASS or expli
 - [ ] Reconnect posts queued transactions to `/api/offline-sync`.
 - [ ] Queue items are removed only after server acknowledgement.
 - [ ] Parcel acknowledgement routes to CARE with revalidation required.
+- [ ] Farmer UI remains `CARE REVIEW` after server ACK and does not show approved/verified until a CARE human-approval artifact is available.
+- [ ] Cross-tab evaluator flow can transfer the CARE approval receipt to the PWA without claiming production persistence.
 
 ## Integrity gates
 - [ ] Verified aggregate baselines carry source, date and URL provenance.
 - [ ] Synthetic operational data is visibly labelled.
-- [ ] Government connectors use truth states: live prototype / sandbox / public reference / contract ready.
+- [ ] Statewide synthetic CARE total and district totals are numerically consistent with the UI labels; representative table rows are labelled as samples.
+- [ ] Government connectors use truth states: live prototype / sandbox / public reference / contract ready / adapter pattern.
 - [ ] SUTRA-ID Edge is optional last-mile rail, not a substitute for the required farmer app.
 - [ ] No demo farmer data is real personal data.
 
 ## Engineering gates
 - [ ] `npm test` passes locally or in CI.
 - [ ] API modules compile.
-- [ ] Command-centre and farmer inline JavaScript compile.
+- [ ] Command-centre and farmer JavaScript compile.
 - [ ] GitHub Actions job runs; if GitHub returns `startup_failure` before a job exists, document it separately rather than misclassifying it as test failure.
 - [ ] Desktop visual QA at evaluator resolution.
 - [ ] Mobile visual/PWA QA.
