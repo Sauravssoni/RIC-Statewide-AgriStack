@@ -5,39 +5,44 @@
 **Applicant:** Syntheon Tech Private Limited  
 **iStart Registration:** 3B9D9E48  
 **Entity CIN:** U63120RJ2025PTC100649  
-**Production root:** `/` → `/command-centre/`  
+**Live evaluator prototype:** https://ric-statewide-agri-stack.vercel.app/dashboard  
+**Canonical evaluator surface:** `/mission-control/`  
 **Farmer PWA:** `/kisan` → `/farmer/`
 
-> Rajasthan has achieved Farmer-ID scale. The next mission is to keep agricultural digital truth continuously correct, consented, explainable and usable across all 41 districts — from State Mission Control to an offline farmer transaction.
+> **Rajasthan has achieved Farmer-ID scale. The next mission is to keep agricultural digital truth continuously correct, consented, explainable and usable — from State Mission Control to an offline farmer transaction.**
 
-RAJ-AGRISETU X is **not another master database**. It is a federated operating layer built around existing Government DPI and departmental systems.
+RAJ-AGRISETU X is **not another master database**. It is a federated post-registration operating layer that extends AgriStack and Rajasthan's existing DPI.
 
-## Evaluator surfaces
+## What the prototype proves today
 
-### 1. State AgriStack Mission Control
-`command-centre/`
+The hosted release is intentionally labelled **INTERACTIVE PROTOTYPE**. It demonstrates the hard workflow end-to-end with synthetic evaluator records and deterministic APIs:
 
-Ten operational modules:
-1. Mission Control
-2. GIS Intelligence
-3. FarmGraph AI
-4. CARE Integrity
-5. Consent & Scheme
-6. Farmer & SUTRA
-7. Interoperability
-8. Rollout & Vision
-9. Governance
-10. Audit & Evidence
+**Detect source drift → explain with FarmGraph AI → verify offline → CARE human decision → purpose consent → deterministic scheme pre-check → audit receipt.**
 
-The homepage is officer-first: verified baselines, district readiness, pendency/SLA, cross-department health, FarmGraph integrity, CARE exceptions and trusted events. No marketing hero or world basemap is used.
+It does **not** claim privileged Government credentials, live source mutation, statutory benefit approval or production readiness. The proposed 90-day engagement replaces synthetic/contract adapters with Department-approved integrations, field validation, security/UAT and operational SLAs.
+
+## 90-second evaluator journey
+
+Open the live prototype and click **Start 90-sec Demo**.
+
+1. **Detect** — a sanctioned RoR mutation indicates 3 parcels while the Farmer Registry relationship graph exposes 2.
+2. **Explain** — FarmGraph AI identifies the missing Farmer ID → parcel edge with source/time/provenance context.
+3. **Verify offline** — the Hindi-first Farmer PWA captures the farmer assertion locally; reconnect produces an ACK, not approval.
+4. **Authorize** — CARE compares source facts, assertion and AI observation; an authorized human issues a bounded decision receipt.
+5. **Consent** — purpose, data scope, duration and revocation are explicit.
+6. **Serve** — deterministic scheme-readiness logic becomes available only after governed inputs are satisfied.
+
+## Evaluator modules
+
+### 1. Mission Control
+Officer-first State operations: verified baselines, prototype maturity, guided demo and operational outcomes.
 
 ### 2. FarmGraph AI — temporal agricultural digital twin
-FarmGraph AI links **Farmer ID ↔ Jan Aadhaar reference ↔ parcel/khasra ↔ crop ↔ water context ↔ consent ↔ scheme ↔ evidence ↔ CARE case** while keeping source authority, effective time, verification state, consent context and provenance attached to each relationship.
+Links **Farmer ID ↔ Jan Aadhaar reference ↔ parcel/khasra ↔ crop ↔ water context ↔ consent ↔ scheme ↔ evidence ↔ CARE case** while attaching source authority, effective time, verification state and provenance to relationships.
 
-It does not replace Farmer Registry, RoR, Crop Sown Registry or Jan Aadhaar. It gives officers an explainable relationship layer for detecting drift and orchestrating correction.
+FarmGraph AI does not replace Farmer Registry, RoR, Crop Sown Registry or Jan Aadhaar. AI may detect/explain/rank drift; it may not create Government facts.
 
 ### 3. CARE — Continuous Agricultural Reconciliation Engine
-CARE turns source disagreement into a governed workflow:
 
 ```text
 source / mutation event
@@ -46,73 +51,61 @@ relationship impact analysis
         ↓
 source-state comparison
         ↓
-farmer assertion / evidence where required
+farmer assertion / evidence
         ↓
 authorized human decision
         ↓
 approved downstream adapter + receipt
 ```
 
-Source fact, farmer assertion, AI observation and official decision remain distinct states.
+**ACK ≠ verification. Human approval ≠ source mutation.** Only an approved downstream integration may request a Government-source change.
 
-### 4. Offline-first Farmer PWA
-`farmer/`
+### 4. Farmer & Field
+- **Primary:** installable Hindi-first offline Farmer PWA.
+- **Assisted:** eMitra / CSC / FPO / Krishi Sakhi / Department camps using the same governed workflow.
+- **Selective edge:** SUTRA-ID Edge for voice-first, evidence-heavy or low-connectivity field execution.
 
-The challenge-required farmer application demonstrates:
-- installable PWA shell;
-- Hindi-first self-verification;
-- Farmer Registry vs RoR parcel mismatch;
-- persistent local transaction queue;
-- reconnect acknowledgement via `/api/offline-sync`;
-- CARE revalidation requirement;
-- purpose-bound consent;
-- deterministic scheme pre-check with authority boundary.
+### 5. GIS Intelligence
+Rajasthan-only operational context: district readiness, land-sync pressure, CARE load, offline reach and future water-aware graph context. No world/OSM basemap. Production geometry is explicitly **Rajdharaa/LGD-authorized**.
 
-**Offline acknowledgement is not Government record mutation.** A land-linked correction remains subject to CARE/human review and authorized downstream integration.
+### 6. DPI & Integrations
+AgriStack/UFSI, Jan Aadhaar 2.0, e-Dharti/DILRMP, Raj Sewa Dwaar, Raj SSO, RajMasters/LGD, Rajdharaa, RajKisan, Sampark and BHASHINI are integration anchors — not systems to replace.
 
-### 5. SUTRA-ID Edge + BHASHINI
-The PWA is the primary farmer mobile channel. SUTRA-ID Edge is an **optional voice-first, low-connectivity field execution rail** for camps, assisted service and digital-literacy edge cases. BHASHINI is the preferred production ASR/TTS/translation rail where authorized.
+### 7. 90-Day Rollout & 2030 Vision
+Five milestone gates convert the evaluator prototype into a production core with approved connectors, contrasting field validation, security/UAT, documentation and statewide scale blueprint.
+
+### 8. Evidence Room
+Verified baselines, synthetic operational metrics, integration truth states and AI authority boundaries are visibly separated.
 
 ## Verified Rajasthan operating context
 
 | Baseline | Value | Provenance |
 |---|---:|---|
-| Rajasthan Farmer IDs generated | **87,23,010** | PIB / Ministry of Agriculture & Farmers Welfare · 20 Jul 2026 |
-| Current Rajasthan district scope | **41** | Rajasthan current administrative master / RajMasters-compatible reference |
-| e-Dharti online tehsils | **424 / 425** | Rajasthan e-Dharti / DILRMP current reference |
-| Mutation research snapshot | **71,09,590 total; 69,06,097 sanctioned; 8-day statewide median** | Rajasthan e-Dharti research snapshot · 15 Aug 2026 |
+| Rajasthan Farmer IDs generated | **87,23,010** | PIB / Ministry of Agriculture & Farmers Welfare · as of 20 Jul 2026 |
+| Current Rajasthan district scope | **41** | official 2026 Rajasthan administrative context |
+| e-Dharti mutation workload | **70,35,917 total; 68,31,835 sanctioned; 8-day statewide median** | Rajasthan e-Dharti · through 31 Jul 2026 |
+| Raj Sewa Dwaar | **1000+ services; 40+ applications/projects; 90M+ transactions/month** | Rajasthan DoIT&C project page |
 
-Every district health score, CARE backlog, consent rate, graph integrity rate and offline KPI is **synthetic evaluator data** unless explicitly marked VERIFIED.
+Every FarmGraph integrity score, CARE backlog, district score, consent rate and offline KPI in the evaluator UI is **synthetic demo data** unless explicitly marked VERIFIED.
 
-## Interoperability anchors
+## Interoperability truth states
 
-The design extends rather than replaces:
-- AgriStack Farmer Registry / Crop Sown Registry / UFSI;
-- AgriStack Consent Manager architecture;
-- Jan Aadhaar 2.0;
-- e-Dharti / DILRMP / RoR;
-- Raj Sewa Dwaar;
-- Raj SSO;
-- RajMasters / LGD;
-- Rajdharaa;
-- RajKisan;
-- Rajasthan Sampark;
-- Water Resources / authorized spatial context;
-- Cooperatives / FPO assisted-service patterns;
-- BHASHINI.
+Every connector is labelled so evaluators can distinguish prototype behavior from production onboarding:
 
-Connector truth states are explicit: **LIVE PROTOTYPE · SANDBOX · PUBLIC REFERENCE · CONTRACT READY · ARCHITECTURE ALIGNED · ADAPTER PATTERN**.
+**LIVE PROTOTYPE · SANDBOX · PUBLIC REFERENCE · CONTRACT READY · ARCHITECTURE ALIGNED · ADAPTER PATTERN**
 
-## GIS integrity
+No production Government credentials are fabricated.
 
-The evaluator console uses Rajasthan-only 41-district contextual reference imagery and never loads a world/OSM basemap. Production administrative/spatial geometry is bound to authorized **Rajdharaa/LGD** services. GIS layers in Mission Control are operational views (readiness, land sync, CARE load, offline reach, water context), not claims that the reference image is a live Government GIS feed.
+## Consent architecture
+
+SahmatiOS is **not represented as a statutory Consent Manager**. It is the Rajasthan-facing notice/language/policy UX around AgriStack consent semantics: purpose, itemised scope, duration, modality, revocation and receipt. AgriStack's official portal describes a DEPA-oriented, revocable Consent Manager and a UFSI Sandbox for controlled integration testing.
 
 ## Responsible AI boundary
 
 AI may:
 - explain and translate;
 - OCR and summarize;
-- detect anomalies and relationship drift;
+- detect anomalies / relationship drift;
 - rank conflicts;
 - recommend next action.
 
@@ -125,28 +118,26 @@ AI may **not autonomously**:
 
 Scheme pre-checks are deterministic and non-statutory.
 
-## 90-day implementation
+## 90-day implementation envelope
 
-Indicative commercial envelope: **₹72.50 lakh** for production core, approved integration onboarding, contrasting field validation, UAT/security, documentation, training and handover.
+**Indicative project cost: ₹72.50 lakh.**
 
-Five gates:
-- Days 0–15: source discovery, interface mapping, privacy/security plan, pilot selection
-- Days 15–35: FarmGraph AI, CARE, SahmatiOS, provenance/audit
-- Days 35–55: State MIS, Farmer PWA, Scheme Compiler, BHASHINI/SUTRA field pattern
-- Days 55–75: three contrasting Rajasthan field contexts
-- Days 75–90: UAT, security/load/accessibility, operating runbooks, training, statewide scale blueprint
+- **Days 0–15:** source ownership, UFSI/Raj Sewa Dwaar mapping, privacy/security plan, pilot selection.
+- **Days 15–35:** FarmGraph AI, CARE, consent policy, provenance/audit, approved adapter contracts.
+- **Days 35–55:** Mission Control, Farmer PWA, Scheme Compiler, BHASHINI/SUTRA field pattern.
+- **Days 55–75:** contrasting Rajasthan field validation.
+- **Days 75–90:** security, UAT, performance/accessibility, runbooks, training and statewide rollout blueprint.
 
-No claim is made that Rajasthan-wide replacement happens within 90 days.
+This is a **production-core pilot**, not a claim to replace Rajasthan's statewide systems in 90 days.
 
 ## 2030 vision
 
-The same trust rails can grow into:
-- **Living AgriStack** — continuously fresh relationships;
-- **FarmGraph AI** — explainable agricultural digital twin;
-- **Verified Agricultural Claims** — minimum-necessary service assertions;
-- **Unified Agri Services** — scheme, insurance, procurement, dealer/fertilizer and future DaaS workflows;
-- **Rural Edge Access** — PWA + assisted service + selective SUTRA;
-- **Rajasthan AgriStack Innovation Sandbox** — UFSI-aligned synthetic data and conformance testing.
+- **Living AgriStack** — continuously fresh farmer–land–crop relationships.
+- **FarmGraph AI** — explainable agricultural digital twin.
+- **Verified Agricultural Claims** — minimum-necessary service assertions instead of broad profile sharing.
+- **Unified Agri Services** — scheme, insurance, procurement, dealer/fertilizer and future DaaS workflows reuse the same trust rails.
+- **Rural Edge Access** — Farmer PWA + assisted service + selective SUTRA.
+- **Rajasthan AgriStack Innovation Sandbox** — UFSI-aligned synthetic data, conformance testing and controlled startup onboarding.
 
 ## Evaluator API contracts
 
@@ -162,6 +153,8 @@ These are deterministic evaluator contracts and do not claim privileged Governme
 
 ## Evidence-first documentation
 
+- `EVALUATOR_ENTRYPOINT.md`
+- `docs/PROTOTYPE_TO_PRODUCTION.md`
 - `docs/EVALUATOR_RUNBOOK.md`
 - `docs/EVIDENCE_INDEX.md`
 - `docs/SUBMISSION_PROOF_MATRIX.md`
@@ -182,30 +175,24 @@ python3 -m http.server 3000
 Open:
 
 ```text
-http://localhost:3000/command-centre/
+http://localhost:3000/mission-control/
 http://localhost:3000/farmer/
 ```
 
-Release checks:
-
-```bash
-npm test
-```
-
-Hosted Vercel builds additionally expose the serverless `/api/*` contracts.
+Hosted Vercel builds additionally expose the deterministic `/api/*` contracts.
 
 ## Primary research anchors
 
 - Rajasthan Innovation Challenge: https://change.rajasthan.gov.in/challenge-detail/174876e845
-- AgriStack: https://agristack.gov.in/
-- Farmer-ID progress: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2289025
-- Rajasthan e-Dharti: https://apnakhata.rajasthan.gov.in/
-- RajMasters: https://rajmasters.rajasthan.gov.in/
-- Rajdharaa: https://gis.rajasthan.gov.in/
+- AgriStack / UFSI Sandbox / Consent Manager: https://agristack.gov.in/
+- Rajasthan Farmer-ID progress: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2289025
+- Rajasthan e-Dharti: https://apnakhata.rajasthan.gov.in/track_meanmedian.aspx
+- Raj Sewa Dwaar: https://doitc.rajasthan.gov.in/ProjectDetails.aspx?ID=1031
 - Jan Aadhaar: https://janaadhaar.rajasthan.gov.in/
-- Rajasthan DoIT&C / Raj Sewa Dwaar: https://doitc.rajasthan.gov.in/
+- 2026 Rajasthan administrative map: https://election.rajasthan.gov.in/Elector%20Statics/Fact%20Sheet%2012.03.2026%20new%20map.pdf
+- Rajdharaa: https://gis.rajasthan.gov.in/
 - BHASHINI: https://bhashini.gov.in/
 
-## Prototype integrity
+## Prototype integrity declaration
 
-All farmer identities, Farmer IDs, parcels, cases, graph edges, consent receipts and operational KPIs are synthetic evaluator records unless visibly marked as an official dated aggregate baseline. Production use requires departmental authorization, approved credentials, current authoritative geography, security/privacy review and UAT.
+All farmer identities, Farmer IDs, parcels, CARE cases, graph edges, consent receipts and operational KPIs shown in the evaluator prototype are synthetic unless visibly marked as a dated official aggregate baseline. Production use requires Department authorization, approved credentials, current authoritative geography, security/privacy review and UAT.
