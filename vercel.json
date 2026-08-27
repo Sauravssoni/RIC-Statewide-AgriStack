@@ -1,12 +1,13 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    {"source":"/","destination":"/mission-control/"},
-    {"source":"/dashboard","destination":"/mission-control/"},
-    {"source":"/dashboard.html","destination":"/mission-control/"},
-    {"source":"/command-centre","destination":"/mission-control/"},
-    {"source":"/kisan","destination":"/farmer/"}
+  "trailingSlash": true,
+  "redirects": [
+    {"source":"/","destination":"/mission-control/","permanent":false},
+    {"source":"/dashboard","destination":"/mission-control/","permanent":false},
+    {"source":"/dashboard.html","destination":"/mission-control/","permanent":false},
+    {"source":"/command-centre","destination":"/mission-control/","permanent":false},
+    {"source":"/command-centre/","destination":"/mission-control/","permanent":false},
+    {"source":"/kisan","destination":"/farmer/","permanent":false}
   ],
   "headers": [
     {"source":"/(.*)","headers":[
