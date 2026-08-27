@@ -20,7 +20,7 @@ assert.ok(mc.includes('Rajdharaa/LGD'),'Production GIS authority boundary missin
 assert.ok(mc.includes('synthetic')||mc.includes('SYNTHETIC'),'Synthetic evaluator-data labelling missing');
 
 // Legacy command-centre remains as engineering reference; core governed logic must still parse.
-const cc=html('command-centre/index.html',['view-mission','view-gis','view-farmgraph','view-care','view-consent','view-field','view-integrations','view-rollout','view-governance','view-evidence']);
+html('command-centre/index.html',['view-mission','view-gis','view-farmgraph','view-care','view-consent','view-field','view-integrations','view-rollout','view-governance','view-evidence']);
 js('command-centre/app.js');
 
 // Farmer PWA hard requirements.
@@ -46,13 +46,15 @@ const consent=fs.readFileSync('api/consent.js','utf8');
 assert.ok(consent.includes('AGRISTACK_CONSENT_MANAGER_PATTERN'),'Consent API must compose with AgriStack consent architecture');
 assert.ok(consent.includes('itemisedData')&&consent.includes('withdrawalMethod'),'DPDP-notice design fields missing');
 
-// Production routing must never expose the retired dashboard again.
+// Production routing must canonicalize to directory URLs so relative CSS/JS/PWA assets always load.
 const vercel=JSON.parse(fs.readFileSync('vercel.json','utf8'));
-assert.equal(vercel.rewrites.find(x=>x.source==='/')?.destination,'/mission-control/','Production root must route to evaluator Mission Control');
-assert.equal(vercel.rewrites.find(x=>x.source==='/dashboard')?.destination,'/mission-control/','/dashboard must route to evaluator Mission Control');
-assert.equal(vercel.rewrites.find(x=>x.source==='/dashboard.html')?.destination,'/mission-control/','/dashboard.html must route to evaluator Mission Control');
-assert.equal(vercel.rewrites.find(x=>x.source==='/command-centre')?.destination,'/mission-control/','/command-centre must route to evaluator Mission Control');
-assert.equal(vercel.rewrites.find(x=>x.source==='/kisan')?.destination,'/farmer/','Kisan shortcut missing');
+assert.equal(vercel.trailingSlash,true,'Vercel must preserve trailing slashes for directory asset resolution');
+const redirect=(source)=>vercel.redirects.find(x=>x.source===source)?.destination;
+assert.equal(redirect('/'),'/mission-control/','Production root must redirect to evaluator Mission Control');
+assert.equal(redirect('/dashboard'),'/mission-control/','/dashboard must redirect to evaluator Mission Control');
+assert.equal(redirect('/dashboard.html'),'/mission-control/','/dashboard.html must redirect to evaluator Mission Control');
+assert.equal(redirect('/command-centre'),'/mission-control/','/command-centre must redirect to evaluator Mission Control');
+assert.equal(redirect('/kisan'),'/farmer/','Kisan shortcut must redirect to canonical Farmer PWA directory');
 const legacy=fs.readFileSync('dashboard.html','utf8');
 assert.ok(legacy.includes("location.replace('/mission-control/')"),'Legacy dashboard file must self-retire to Mission Control');
 
