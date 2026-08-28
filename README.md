@@ -83,7 +83,8 @@ Verified baselines, synthetic operational metrics, integration truth states and 
 |---|---:|---|
 | Rajasthan Farmer IDs generated | **87,23,010** | PIB / Ministry of Agriculture & Farmers Welfare · as of 20 Jul 2026 |
 | Current Rajasthan district scope | **41** | official 2026 Rajasthan administrative context |
-| e-Dharti mutation workload | **70,35,917 total; 68,31,835 sanctioned; 8-day statewide median** | Rajasthan e-Dharti · through 31 Jul 2026 |
+| e-Dharti mutation workload | **71,09,590 total; 69,06,097 sanctioned; 12-day mean; 8-day statewide median** | Rajasthan e-Dharti research snapshot · through 15 Aug 2026 |
+| e-Dharti online tehsils | **424 / 425** | Rajasthan e-Dharti / DILRMP current 2026 reference |
 | Raj Sewa Dwaar | **1000+ services; 40+ applications/projects; 90M+ transactions/month** | Rajasthan DoIT&C project page |
 
 Every FarmGraph integrity score, CARE backlog, district score, consent rate and offline KPI in the evaluator UI is **synthetic demo data** unless explicitly marked VERIFIED.
@@ -154,6 +155,7 @@ These are deterministic evaluator contracts and do not claim privileged Governme
 ## Evidence-first documentation
 
 - `EVALUATOR_ENTRYPOINT.md`
+- `docs/FORM_ANSWERS_FINAL.md` — final detailed portal copy, all responses below 500 words
 - `docs/PROTOTYPE_TO_PRODUCTION.md`
 - `docs/EVALUATOR_RUNBOOK.md`
 - `docs/EVIDENCE_INDEX.md`
