@@ -7,7 +7,7 @@
     {"source":"/dashboard.html","destination":"/mission-control/","permanent":false},
     {"source":"/command-centre","destination":"/mission-control/","permanent":false},
     {"source":"/command-centre/","destination":"/mission-control/","permanent":false},
-    {"source":"/kisan","destination":"/farmer/","permanent":false}
+    {"source":"/kisan/","destination":"/farmer/","permanent":false}
   ],
   "headers": [
     {"source":"/(.*)","headers":[
