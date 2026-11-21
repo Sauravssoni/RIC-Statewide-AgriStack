@@ -2,20 +2,95 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "redirects": [
-    {"source":"/","destination":"/mission-control/","permanent":false},
-    {"source":"/dashboard","destination":"/mission-control/","permanent":false},
-    {"source":"/dashboard.html","destination":"/mission-control/","permanent":false},
-    {"source":"/command-centre","destination":"/mission-control/","permanent":false},
-    {"source":"/command-centre/","destination":"/mission-control/","permanent":false},
-    {"source":"/kisan/","destination":"/farmer/","permanent":false}
+    {
+      "source": "/",
+      "destination": "/mission-control/",
+      "permanent": false
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/mission-control/",
+      "permanent": false
+    },
+    {
+      "source": "/dashboard.html",
+      "destination": "/mission-control/",
+      "permanent": false
+    },
+    {
+      "source": "/command-centre",
+      "destination": "/mission-control/",
+      "permanent": false
+    },
+    {
+      "source": "/command-centre/",
+      "destination": "/mission-control/",
+      "permanent": false
+    },
+    {
+      "source": "/kisan",
+      "destination": "/farmer/",
+      "permanent": false
+    },
+    {
+      "source": "/kisan/",
+      "destination": "/farmer/",
+      "permanent": false
+    }
   ],
   "headers": [
-    {"source":"/(.*)","headers":[
-      {"key":"X-Content-Type-Options","value":"nosniff"},
-      {"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"},
-      {"key":"Permissions-Policy","value":"camera=(), microphone=(self), geolocation=()"},
-      {"key":"X-Frame-Options","value":"SAMEORIGIN"}
-    ]},
-    {"source":"/api/(.*)","headers":[{"key":"Cache-Control","value":"no-store"}]}
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(self), geolocation=()"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/_ric-voice/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/_ric-voice/:path*/",
+      "destination": "https://seva.syntheontech.com/api/v1/voice/:path*"
+    },
+    {
+      "source": "/_ric-voice/:path*",
+      "destination": "https://seva.syntheontech.com/api/v1/voice/:path*"
+    }
   ]
 }

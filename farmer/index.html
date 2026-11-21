@@ -55,4 +55,5 @@ async function activateConsent(){try{const out=await request('/api/consent',{act
 $('#grantConsent').onclick=async()=>{if(isOffline()){const localId='LOCAL-SHM-'+Math.random().toString(16).slice(2,8).toUpperCase();queueTxn('PURPOSE_CONSENT',{localId,purpose:'SCHEME_PRECHECK',scope:['identity','parcel','crop'],durationHours:24});showConsentReceipt(localId,'QUEUED LOCAL · NOT ACTIVE');toast('Consent request saved locally; activation awaits server acknowledgement')}else await activateConsent()};
 $('#help').onclick=()=>$('#helpModal').classList.add('on');$('#closeHelp').onclick=()=>$('#helpModal').classList.remove('on');
 renderCareState();renderSchemeHint();readCareApproval();setTimeout(()=>{if(!isOffline())syncQueue()},500);
-</script></body></html>
+</script><script defer src="/ric-voice.js" data-ric-project="agrisetu"></script>
+</body></html>
