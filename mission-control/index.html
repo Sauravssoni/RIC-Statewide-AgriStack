@@ -7,7 +7,7 @@
 <meta name="description" content="RAJ-AGRISETU X — Rajasthan AgriStack interactive prototype">
 <title>RAJ-AGRISETU X · Rajasthan AgriStack Mission Control</title>
 <link rel="stylesheet" href="./app.css">
-<style>.ops-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.ops-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0 18px}.ops-kpi{border:1px solid #d4e4e0;background:#f1f7f5;border-radius:9px;padding:13px}.ops-kpi strong{font-size:30px;display:block;color:#123447}.ops-kpi small,.ops-note{color:#526b72;font-size:12px}.ops-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:16px}.ops-current{padding:14px;background:#f0f6f5;border-radius:9px}.ops-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:center;padding:11px 0;border-bottom:1px solid #d4e4e0}.ops-bar{height:7px;background:#d9e7e3;border-radius:6px;overflow:hidden}.ops-bar i{display:block;height:100%;background:#08796e}.ops-row a{color:#075f60;font-weight:700;font-size:12px}.ops-note{margin:12px 0 0}@media(max-width:850px){.ops-layout{grid-template-columns:1fr}.ops-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}</style></head>
+<style>.ops-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.ops-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0 18px}.ops-kpi{border:1px solid #d4e4e0;background:#f1f7f5;border-radius:9px;padding:13px}.ops-kpi strong{font-size:30px;display:block;color:#123447}.ops-kpi small,.ops-note{color:#526b72;font-size:12px}.ops-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:16px}.ops-current{padding:14px;background:#f0f6f5;border-radius:9px;display:flex;flex-direction:column;align-items:flex-start;gap:9px}.ops-current p{margin:5px 0}.ops-current .btn{margin-top:8px}.ops-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:center;padding:11px 0;border-bottom:1px solid #d4e4e0}.ops-bar{height:7px;background:#d9e7e3;border-radius:6px;overflow:hidden}.ops-bar i{display:block;height:100%;background:#08796e}.ops-row a{color:#075f60;font-weight:700;font-size:12px}.ops-note{margin:12px 0 0}@media(max-width:850px){.ops-layout{grid-template-columns:1fr}.ops-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}</style></head>
 <body>
 <div class="shell">
   <aside class="side">
@@ -50,18 +50,9 @@
           <article><i>04</i><div><b>Link verified facts to schemes</b><span>Deterministic rule trace; AI never grants benefit</span></div><mark>WORKING</mark></article>
         </div>
 
-        <div class="kpis">
-          <article class="verified"><span>Rajasthan Farmer IDs <em>VERIFIED</em></span><strong>90.19L</strong><small>Rajasthan CMO · 28 Sep 2026</small></article>
-          <article class="verified"><span>Current district scope <em>VERIFIED</em></span><strong>41</strong><small>current Rajasthan administrative context</small></article>
-          <article class="verified"><span>e-Dharti online tehsils <em>VERIFIED</em></span><strong>424/425</strong><small>land-record digital-readiness baseline</small></article>
-          <article><span>FarmGraph integrity <em>DEMO KPI</em></span><strong>98.7%</strong><small>provenance-complete active relationships</small></article>
-          <article><span>CARE backlog <em>DEMO KPI</em></span><strong>1,284</strong><small>synthetic cross-source exceptions</small></article>
-          <article><span>Offline ACK success <em>DEMO KPI</em></span><strong>99.2%</strong><small>synthetic evaluator transactions</small></article>
-        </div>
-
-        <div class="mission-grid">
+        <div style="margin:16px 0 6px"><span class="eyebrow">DATED OFFICIAL STATE CONTEXT · NOT LIVE CASE METRICS</span></div><div class="kpis" style="grid-template-columns:repeat(auto-fit,minmax(135px,1fr))"><article class="verified"><span>Farmer IDs <em>OFFICIAL</em></span><strong>90.19L</strong><small>CMO · 28 Sep 2026</small></article><article class="verified"><span>Surveyed land parcels <em>OFFICIAL</em></span><strong>2.72Cr+</strong><small>CMO · 28 Sep 2026</small></article><article class="verified"><span>Geo-referenced villages <em>OFFICIAL</em></span><strong>99%</strong><small>CMO · 28 Sep 2026</small></article><article class="verified"><span>Administrative context</span><strong>41</strong><small>District reference</small></article></div><div class="mission-grid">
           <article class="panel demo-journey">
-            <header><div><span class="eyebrow">THE DEMO — ONE FARMER, ONE CONFLICT, THE WHOLE SYSTEM</span><h3>Kamla Devi · Barmer · Kharif 2026</h3><p>Follow one synthetic land-link discrepancy from detection to governed service readiness.</p></div><button class="btn" id="demoLaunchInline">Illustrative walkthrough</button><a class="btn primary" href="/evaluator/">Run persisted case →</a></header>
+            <header><div><span class="eyebrow">ILLUSTRATIVE WALKTHROUGH · FOR ARCHITECTURE QUESTIONS</span><h3>Kamla Devi · Barmer · Kharif 2026</h3><p>For actual database operations, use the district drilldown above. This walkthrough explains the intended architecture.</p></div><button class="btn" id="demoLaunchInline">Illustrative walkthrough</button><a class="btn primary" href="/evaluator/">Run persisted case →</a></header>
             <div class="journey" id="journey">
               <button data-demo-step="0" class="active"><i>1</i><div><b>Detect</b><span>RoR changed after mutation</span></div></button>
               <button data-demo-step="1"><i>2</i><div><b>Explain</b><span>FarmGraph identifies missing edge</span></div></button>
