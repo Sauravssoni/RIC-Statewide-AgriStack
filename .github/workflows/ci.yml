@@ -1,7 +1,7 @@
 name: Evaluator Release Gate
 on:
   push:
-    branches: [main, 'feature/**']
+    branches: [main, 'feature/**', 'eval/agrisetu-persistent-core']
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -10,11 +10,13 @@ permissions:
 jobs:
   smoke:
     name: Smoke / Node 20
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: npm install --ignore-scripts
       - run: npm test
+      - run: node tests/persisted-core.cjs
