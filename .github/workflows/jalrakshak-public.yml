@@ -1,0 +1,20 @@
+name: JalRakshak public evaluation verification
+on:
+  push:
+    branches: [eval/jalrakshak-public-cross-project-qa]
+permissions:
+  contents: read
+jobs:
+  public:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - run: npm install --ignore-scripts --no-save playwright@1.51.1
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/jalrakshak-public.cjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: jalrakshak-public-evidence
+          path: water-*.png
