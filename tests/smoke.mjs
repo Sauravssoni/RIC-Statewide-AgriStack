@@ -11,7 +11,7 @@ assert.ok(mc.includes('INTERACTIVE PROTOTYPE'),'Prototype maturity label missing
 assert.ok(mc.includes('90-DAY PRODUCTION CORE'),'Prototype → production maturity contract missing');
 assert.ok(mc.includes('FarmGraph AI'),'FarmGraph AI must be first-class in evaluator surface');
 assert.ok(mc.includes('CARE')&&mc.includes('human'),'CARE human-authority story missing');
-assert.ok(mc.includes('Start 90-sec Demo')&&mcjs.includes('const DEMO='),'Guided evaluator demo missing');
+assert.ok(mc.includes('Open database-backed evaluator')&&mcjs.includes('const DEMO='),'Guided evaluator demo missing');
 assert.ok(mcjs.includes("localStorage.setItem('rajAgriCareApproval'"),'CARE approval must bridge to Farmer PWA evaluator session');
 assert.ok(mcjs.includes("caseId:'CARE-RAJ-2026-001284'"),'Mission Control CARE must address exact active case');
 assert.ok(!/openstreetmap|leaflet/i.test(mc+mcjs),'Mission Control must not use world/OSM/Leaflet basemap');
@@ -54,7 +54,7 @@ assert.equal(redirect('/'),'/mission-control/','Production root must redirect to
 assert.equal(redirect('/dashboard'),'/mission-control/','/dashboard must redirect to evaluator Mission Control');
 assert.equal(redirect('/dashboard.html'),'/mission-control/','/dashboard.html must redirect to evaluator Mission Control');
 assert.equal(redirect('/command-centre'),'/mission-control/','/command-centre must redirect to evaluator Mission Control');
-assert.equal(redirect('/kisan'),'/farmer/','Kisan shortcut must redirect to canonical Farmer PWA directory');
+assert.equal(redirect('/kisan/'),'/farmer/','Kisan shortcut must redirect to canonical Farmer PWA directory');
 const legacy=fs.readFileSync('dashboard.html','utf8');
 assert.ok(legacy.includes("location.replace('/mission-control/')"),'Legacy dashboard file must self-retire to Mission Control');
 
