@@ -1,7 +1,7 @@
 name: Evaluator Release Gate
 on:
   push:
-    branches: [main, 'feature/**', 'eval/agrisetu-persistent-core']
+    branches: [main, 'feature/**', 'eval/agrisetu-persistent-core', 'eval/agrisetu-multicase-v2']
   pull_request:
     branches: [main]
   workflow_dispatch:
