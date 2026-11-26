@@ -11,7 +11,7 @@ assert.ok(mc.includes('INTERACTIVE PROTOTYPE'),'Prototype maturity label missing
 assert.ok(mc.includes('90-DAY PRODUCTION CORE'),'Prototype → production maturity contract missing');
 assert.ok(mc.includes('FarmGraph AI'),'FarmGraph AI must be first-class in evaluator surface');
 assert.ok(mc.includes('CARE')&&mc.includes('human'),'CARE human-authority story missing');
-assert.ok(mc.includes('Start 90-sec Demo')&&mcjs.includes('const DEMO='),'Guided evaluator demo missing');
+assert.ok(mc.includes('Open database-backed evaluator')&&mcjs.includes('const DEMO='),'Guided evaluator demo missing');
 assert.ok(mcjs.includes("localStorage.setItem('rajAgriCareApproval'"),'CARE approval must bridge to Farmer PWA evaluator session');
 assert.ok(mcjs.includes("caseId:'CARE-RAJ-2026-001284'"),'Mission Control CARE must address exact active case');
 assert.ok(!/openstreetmap|leaflet/i.test(mc+mcjs),'Mission Control must not use world/OSM/Leaflet basemap');
