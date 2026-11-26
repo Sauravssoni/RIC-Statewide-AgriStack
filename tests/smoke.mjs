@@ -54,7 +54,7 @@ assert.equal(redirect('/'),'/mission-control/','Production root must redirect to
 assert.equal(redirect('/dashboard'),'/mission-control/','/dashboard must redirect to evaluator Mission Control');
 assert.equal(redirect('/dashboard.html'),'/mission-control/','/dashboard.html must redirect to evaluator Mission Control');
 assert.equal(redirect('/command-centre'),'/mission-control/','/command-centre must redirect to evaluator Mission Control');
-assert.equal(redirect('/kisan'),'/farmer/','Kisan shortcut must redirect to canonical Farmer PWA directory');
+assert.equal(redirect('/kisan/'),'/farmer/','Kisan shortcut must redirect to canonical Farmer PWA directory');
 const legacy=fs.readFileSync('dashboard.html','utf8');
 assert.ok(legacy.includes("location.replace('/mission-control/')"),'Legacy dashboard file must self-retire to Mission Control');
 
