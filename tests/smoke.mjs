@@ -12,8 +12,8 @@ assert.ok(mc.includes('90-DAY PRODUCTION CORE'),'Prototype → production maturi
 assert.ok(mc.includes('FarmGraph AI'),'FarmGraph AI must be first-class in evaluator surface');
 assert.ok(mc.includes('CARE')&&mc.includes('human'),'CARE human-authority story missing');
 assert.ok(mc.includes('Open database-backed evaluator')&&mcjs.includes('const DEMO='),'Guided evaluator demo missing');
-assert.ok(mcjs.includes("localStorage.setItem('rajAgriCareApproval'"),'CARE approval must bridge to Farmer PWA evaluator session');
-assert.ok(mcjs.includes("caseId:'CARE-RAJ-2026-001284'"),'Mission Control CARE must address exact active case');
+assert.ok(mcjs.includes("/evaluator/?step=2"),'Mission Control must route CARE decisions to persisted evaluator');
+const live=js('mission-control/live-ops.js');assert.ok(live.includes('/api/evaluator-ops/')&&live.includes('/api/evaluator-session/'),'State operations must read the shared persisted backend');
 assert.ok(!/openstreetmap|leaflet/i.test(mc+mcjs),'Mission Control must not use world/OSM/Leaflet basemap');
 assert.ok(/41 districts|41-district|41-DISTRICT/i.test(mc),'Current Rajasthan 41-district context missing');
 assert.ok(mc.includes('Rajdharaa/LGD'),'Production GIS authority boundary missing');
@@ -28,7 +28,7 @@ const farmer=html('farmer/index.html',['records','schemes','offlineReceipt','syn
 assert.ok(farmer.includes('serviceWorker.register'),'Farmer PWA service worker registration missing');
 assert.ok(farmer.includes('/api/offline-sync'),'Acknowledged offline sync API missing');
 assert.ok(farmer.includes('/api/scheme-check'),'Deterministic scheme API missing');
-assert.ok(farmer.includes('readCareApproval'),'Cross-surface CARE approval read missing');
+assert.ok(farmer.includes('/api/evaluator-session/')&&farmer.includes('/evaluator/?step=1'),'Farmer channel must read shared case and link to live assertion');
 assert.ok(farmer.includes('parcelCareApproved?3:0'),'Scheme parcel input must require CARE approval, not server acknowledgement');
 assert.ok(farmer.includes('ACK is not approval'),'Offline acknowledgement authority boundary missing');
 for(const f of ['farmer/sw.js','farmer/manifest.webmanifest','farmer/icon-192.png','farmer/icon-512.png'])assert.ok(fs.existsSync(f),`${f} missing`);
@@ -37,7 +37,7 @@ assert.ok(manifest.icons?.some(x=>x.sizes==='192x192'),'192 PWA icon missing');
 assert.ok(manifest.icons?.some(x=>x.sizes==='512x512'),'512 PWA icon missing');
 
 // Evaluator API contracts.
-for(const api of ['health','state-overview','districts','care','consent','scheme-check','offline-sync'])js(`api/${api}.js`);
+for(const api of ['health','state-overview','districts','care','consent','scheme-check','offline-sync','evaluator-session','evaluator-ops'])js(`api/${api}.js`);
 const care=fs.readFileSync('api/care.js','utf8');
 assert.ok(care.includes("'CARE-RAJ-2026-001284'"),'Canonical CARE case missing from API');
 assert.ok(care.includes('approvalArtifact'),'CARE human approval artifact missing');
