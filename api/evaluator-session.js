@@ -3,12 +3,14 @@ const {neon}=require('@neondatabase/serverless');
 const hash=x=>crypto.createHash('sha256').update(x).digest('hex');
 const now=()=>new Date().toISOString();
 const CASE={id:'CARE-DEMO-BARMER-001',farmer:'Kamla Devi (fictional)',district:'Barmer',crop:'Mustard',registry:['KH-214/1','KH-214/2'],ror:['KH-214/1','KH-214/2','KH-214/3'],sourceVersion:'DEMO-ROR-MUT-03',sourceTime:'2026-11-20T10:30:00+05:30'};
-function initial(){return {case:CASE,status:'NEEDS_REVIEW',assertion:null,decision:null,consent:null,precheck:null,events:[],receipts:{}}}
-function publicState(row){return {id:row.id,version:row.version,...row.state,missing:row.state.case.ror.filter(p=>!row.state.case.registry.includes(p)),storage:'POSTGRESQL',authority:'SYNTHETIC_EVALUATOR_ONLY',updatedAt:row.updated_at}}
+const CASES={barmer:CASE,bikaner:{id:'CARE-DEMO-BIKANER-002',farmer:'Demo farmer B (fictional)',district:'Bikaner',crop:'Bajra',registry:['KH-301/1','KH-301/9'],ror:['KH-301/1','KH-301/2'],sourceVersion:'DEMO-ROR-MUT-04',sourceTime:'2026-11-22T09:00:00+05:30'},kota:{id:'CARE-DEMO-KOTA-003',farmer:'Demo farmer C (fictional)',district:'Kota',crop:'Wheat',registry:['KH-510/1'],ror:['KH-510/1','KH-510/2','KH-510/3'],sourceVersion:'DEMO-ROR-MUT-05',sourceTime:'2026-11-24T09:00:00+05:30'}};
+function diff(c){return {missing:c.ror.filter(p=>!c.registry.includes(p)),extra:c.registry.filter(p=>!c.ror.includes(p)),matched:c.registry.filter(p=>c.ror.includes(p))}}
+function initial(scenario='barmer'){if(!Object.hasOwn(CASES,scenario))throw Object.assign(new Error('UNKNOWN_SCENARIO'),{status:400});return {case:CASES[scenario],scenario,status:'NEEDS_REVIEW',assertion:null,decision:null,consent:null,precheck:null,events:[],receipts:{}}}
+function publicState(row){const state=structuredClone(row.state);if(state.consent?.status==='ACTIVE'&&Date.parse(state.consent.expiresAt)<=Date.now()){state.consent.status='EXPIRED';state.precheck=null}return {id:row.id,version:row.version,...state,...diff(state.case),storage:'POSTGRESQL',authority:'SYNTHETIC_EVALUATOR_ONLY',updatedAt:row.updated_at}}
 function apply(state,action,eventId){const s=structuredClone(state);const t=now();let type=action;
 const fail=(msg)=>{throw Object.assign(new Error(msg),{status:409})};
 switch(action){
-case 'SYNC_ASSERTION':if(!['NEEDS_REVIEW','EVIDENCE_REQUESTED'].includes(s.status))fail('CASE_NOT_OPEN');s.assertion={parcel:'KH-214/3',receivedAt:t,ack:'ACK-'+eventId,source:'FICTIONAL_FARMER_ASSERTION'};s.status='ASSERTION_RECEIVED';break;
+case 'SYNC_ASSERTION':if(!['NEEDS_REVIEW','EVIDENCE_REQUESTED'].includes(s.status))fail('CASE_NOT_OPEN');s.assertion={parcels:diff(s.case).missing,removedLinks:diff(s.case).extra,receivedAt:t,ack:'ACK-'+eventId,source:'FICTIONAL_FARMER_ASSERTION'};s.status='ASSERTION_RECEIVED';break;
 case 'REQUEST_EVIDENCE':if(s.status!=='ASSERTION_RECEIVED')fail('ASSERTION_REQUIRED');s.status='EVIDENCE_REQUESTED';break;
 case 'APPROVE':case 'REJECT':if(s.status!=='ASSERTION_RECEIVED')fail('ASSERTION_REQUIRED');s.status=action==='APPROVE'?'APPROVED':'REJECTED';s.decision={state:s.status,actor:'DEMO_DISTRICT_VERIFIER',at:t,verifiedParcelCount:action==='APPROVE'?s.case.ror.length:null,sourceWrite:false};s.precheck=null;break;
 case 'GRANT_CONSENT':if(s.status!=='APPROVED')fail('CARE_APPROVAL_REQUIRED');if(s.consent?.status==='ACTIVE'&&Date.parse(s.consent.expiresAt)>Date.now())fail('CONSENT_ALREADY_ACTIVE');s.consent={id:'CONSENT-'+eventId,status:'ACTIVE',purpose:'DEMO_SCHEME_READINESS',scope:['identity_reference','parcel_relationship','crop'],grantedAt:t,expiresAt:new Date(Date.now()+86400000).toISOString()};s.precheck=null;break;
@@ -22,7 +24,7 @@ if(!process.env.AGRISETU_DATABASE_URL)return res.status(503).json({error:'DATABA
 const sql=neon(process.env.AGRISETU_DATABASE_URL);const body=typeof req.body==='string'?JSON.parse(req.body):req.body||{};
 if(req.method==='POST'&&body.action==='CREATE'){
 const token=crypto.randomBytes(32).toString('hex'),id=crypto.randomUUID();
-const rows=await sql`INSERT INTO evaluator_sessions(id,token_hash,state) SELECT ${id}::uuid,${hash(token)},${JSON.stringify(initial())}::jsonb WHERE (SELECT count(*) FROM evaluator_sessions)<1000 RETURNING *`;
+const rows=await sql`INSERT INTO evaluator_sessions(id,token_hash,state) SELECT ${id}::uuid,${hash(token)},${JSON.stringify(initial(String(body.scenario||'barmer')))}::jsonb WHERE (SELECT count(*) FROM evaluator_sessions)<1000 RETURNING *`;
 if(!rows.length)return res.status(429).json({error:'DEMO_CAPACITY_REACHED'});return res.status(201).json({token,session:publicState(rows[0])});
 }
 const auth=String(req.headers.authorization||'');const token=auth.startsWith('Bearer ')?auth.slice(7):'';if(!/^[a-f0-9]{64}$/.test(token))return res.status(401).json({error:'SESSION_TOKEN_REQUIRED'});
@@ -38,4 +40,4 @@ const updated=await sql`UPDATE evaluator_sessions SET version=version+1,state=${
 if(!updated.length)return res.status(409).json({error:'VERSION_CONFLICT_RELOAD'});
 return res.status(200).json({session:publicState(updated[0]),receipt:next.receipts[eventId]});
 }catch(e){return res.status(e.status||500).json({error:e.status?e.message:'SERVER_OPERATION_FAILED'});}};
-module.exports.apply=apply;module.exports.initial=initial;
+module.exports.apply=apply;module.exports.initial=initial;module.exports.diff=diff;
